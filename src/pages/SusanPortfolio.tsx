@@ -6,6 +6,10 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import ecommerceImage from "@/assets/ecommerce-project.jpg";
+import studentManagementImage from "@/assets/student-management-project.jpg";
+import egovernanceImage from "@/assets/egovernance-project.jpg";
+import pythonProjectsImage from "@/assets/python-projects.jpg";
 
 export default function SusanPortfolio() {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,25 +40,28 @@ export default function SusanPortfolio() {
       features: ["User Authentication", "Shopping Cart", "Checkout Features", "RESTful APIs", "Responsive UI"],
       icon: <ShoppingCart className="h-6 w-6" />,
       github: "https://github.com/susanacharya12/django-ecommerce.git",
-      demo: "Coming Soon"
+      demo: "Coming Soon",
+      image: ecommerceImage
     },
     {
-      title: "Student Management System",
+      title: "Student Management System (CRUD)",
       description: "Created a web app with admin dashboard for managing student records, including basic data visualization.",
       tech: ["Django", "SQLite3"],
       features: ["CRUD Operations", "Admin Dashboard", "Data Visualization"],
       icon: <Users className="h-6 w-6" />,
       github: "https://github.com/susanacharya12/student-management-system.git",
-      demo: "Coming Soon"
+      demo: "Coming Soon",
+      image: studentManagementImage
     },
     {
-      title: "E-Governance Portal",
+      title: "E-Governance Web Portal",
       description: "Built a multilingual public service request portal with user forms, admin panel, and automated email notifications.",
       tech: ["Django", "Bootstrap", "i18n"],
       features: ["Multilingual Support", "Email Notifications", "Admin Panel", "User Forms"],
       icon: <BookOpen className="h-6 w-6" />,
       github: "https://github.com/susanacharya12",
-      demo: "Coming Soon"
+      demo: "Coming Soon",
+      image: egovernanceImage
     },
     {
       title: "Python Projects",
@@ -63,7 +70,8 @@ export default function SusanPortfolio() {
       features: ["Password Generator", "Random Number Game", "Rock Paper Scissors", "Treasure Island Game"],
       icon: <Code className="h-6 w-6" />,
       github: "https://github.com/susanacharya12/Python-Project.git",
-      demo: "Coming Soon"
+      demo: "Coming Soon",
+      image: pythonProjectsImage
     }
   ];
 
@@ -88,7 +96,8 @@ export default function SusanPortfolio() {
     tools: [
       { name: "Git", icon: "📝" },
       { name: "GitHub", icon: "🔧" },
-      { name: "Visual Studio Code", icon: "💻" }
+      { name: "Visual Studio Code", icon: "💻" },
+      { name: "PyCharm", icon: "🧠" }
     ],
     softSkills: [
       { name: "Problem Solving", icon: "🧠" },
@@ -251,6 +260,14 @@ export default function SusanPortfolio() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
+                  {/* Project Image */}
+                  <div className="mb-4 overflow-hidden rounded-lg">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
                   <p className="text-black/80 dark:text-white/80 mb-4">
                     {project.description}
                   </p>
@@ -343,8 +360,20 @@ export default function SusanPortfolio() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <h3 className="text-xl font-semibold text-black dark:text-white mb-2">BSc. Computer Science and Information Technology (CSIT)</h3>
-              <p className="text-black/80 dark:text-white/80 mb-4">Bhaktapur Multiple Campus, Tribhuvan University</p>
+              <div className="mb-4">
+                <h3 className="text-2xl font-bold text-black dark:text-white mb-2">
+                  🎓 B.Sc. in Computer Science and Information Technology (CSIT)
+                </h3>
+                <p className="text-lg text-black/80 dark:text-white/80 mb-2">
+                  📍 <span className="font-semibold">Bhaktapur Multiple Campus</span>
+                </p>
+                <p className="text-black/70 dark:text-white/70 mb-2">
+                  Affiliated to <span className="font-semibold">Institute of Science and Technology (IOST)</span>, <span className="font-semibold">Tribhuvan University</span>
+                </p>
+                <p className="text-blue-600 dark:text-blue-400 font-semibold">
+                  📅 Currently Pursuing
+                </p>
+              </div>
               
               <h4 className="font-semibold text-black dark:text-white mb-3">Core Subjects:</h4>
               <div className="grid md:grid-cols-2 gap-2">
