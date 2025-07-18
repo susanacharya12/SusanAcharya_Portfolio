@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Code, Database, Globe, Award, GraduationCap, Languages, Trophy, Download, Send, User, BookOpen, ShoppingCart, Users } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Code, Database, Globe, Award, GraduationCap, Languages, Trophy, Download, Send, User, BookOpen, ShoppingCart, Users, Monitor, Server, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +18,7 @@ export default function SusanPortfolio() {
 
   useEffect(() => {
     setIsVisible(true);
-    // Typing animation
+    // Enhanced typing animation
     let index = 0;
     const typing = setInterval(() => {
       if (index < introText.length) {
@@ -27,10 +27,26 @@ export default function SusanPortfolio() {
       } else {
         clearInterval(typing);
       }
-    }, 150);
+    }, 100);
 
     return () => clearInterval(typing);
   }, []);
+
+  const navigationSections = [
+    { id: "projects", label: "Featured Projects" },
+    { id: "skills", label: "Skills & Technologies" },
+    { id: "education", label: "Education" },
+    { id: "certificates", label: "Certificates" },
+    { id: "achievements", label: "Achievements" },
+    { id: "connect", label: "Let's Connect" }
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const projects = [
     {
@@ -75,185 +91,119 @@ export default function SusanPortfolio() {
     }
   ];
 
-  const skills = {
-    frontend: [
-      { name: "HTML5", icon: "🌐" },
-      { name: "CSS3", icon: "🎨" },
-      { name: "JavaScript", icon: "💫" },
-      { name: "Bootstrap", icon: "📱" },
-      { name: "Responsive Design", icon: "📐" }
-    ],
-    backend: [
-      { name: "Python", icon: "🐍" },
-      { name: "Django", icon: "🚀" },
-      { name: "Django REST Framework", icon: "🔗" },
-      { name: "RESTful APIs", icon: "⚡" }
-    ],
-    databases: [
-      { name: "MySQL", icon: "🗄️" },
-      { name: "SQLite3", icon: "💾" }
-    ],
-    tools: [
-      { name: "Git", icon: "📝" },
-      { name: "GitHub", icon: "🔧" },
-      { name: "Visual Studio Code", icon: "💻" },
-      { name: "PyCharm", icon: "🧠" }
-    ],
-    softSkills: [
-      { name: "Problem Solving", icon: "🧠" },
-      { name: "Team Collaboration", icon: "🤝" },
-      { name: "Communication", icon: "🗣️" },
-      { name: "Adaptability", icon: "🔄" }
-    ]
-  };
-
-  const certificates = [
-    {
-      name: "🟩 Python Bootcamp",
-      description: "Completed a hands-on training covering Python basics, data structures, and practical programming exercises.",
-      link: "https://www.udemy.com/certificate/UC-0bffe5ad-cd58-40fd-ab5d-a536fd3c6837/"
-    },
-    {
-      name: "🟦 Python for Beginners – Learns All The Basics Of Python",
-      description: "Covered beginner-level topics including: Variables and data types, Functions and loops, Conditionals, Lists and dictionaries.",
-      link: "https://www.udemy.com/certificate/UC-175f7a52-2f5f-486c-a9d4-039f953669ef/"
-    },
-    {
-      name: "🟨 Python for Data Science – Real Time Exercises",
-      description: "Focused on: Python fundamentals, Object-Oriented Programming (OOP), Use cases for data science.",
-      link: "https://www.udemy.com/certificate/UC-175f7a52-2f5f-486c-a9d4-039f953669ef/"
-    },
-    {
-      name: "🏅 Hackathon Certificate – CODEYATRA",
-      description: "Awarded for actively participating in CODEYATRA, a 48-hour hackathon hosted at Himalayan College of Engineering.",
-      link: "https://www.linkedin.com/in/susan-acharya1618?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-    }
-  ];
-
-  const coreSubjects = [
-    "Data Structures & Algorithms",
-    "Web Technologies",
-    "Operating Systems",
-    "Software Engineering",
-    "Object-Oriented Programming (Java, C++)",
-    "Computer Networks",
-    "Python Programming"
-  ];
-
-  const achievements = [
-    "Participated in a 48-hour hackathon organized by CodeYaatra at Himalayan College of Engineering"
-  ];
-
-  const languages = [
-    { name: "English", level: "Fluent" },
-    { name: "Nepali", level: "Native" },
-    { name: "Hindi", level: "Intermediate" }
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 relative overflow-hidden" style={{fontFamily: 'Inter, sans-serif'}}>
+      {/* Fixed Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex justify-center space-x-8">
+            {navigationSections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="text-black hover:text-[#00bcd4] transition-colors duration-300 font-medium"
+                style={{fontFamily: 'Inter, sans-serif'}}
+              >
+                {section.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Moving gradient orbs */}
-        <div className="absolute -top-10 -left-10 w-72 h-72 bg-gradient-to-r from-blue-200/30 to-cyan-200/30 dark:from-blue-800/20 dark:to-cyan-800/20 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/3 -right-20 w-96 h-96 bg-gradient-to-l from-indigo-200/20 to-purple-200/20 dark:from-indigo-800/10 dark:to-purple-800/10 rounded-full animate-bounce" style={{ animationDuration: "8s" }}></div>
-        <div className="absolute bottom-10 left-1/4 w-48 h-48 bg-gradient-to-t from-cyan-200/25 to-sky-200/25 dark:from-cyan-800/15 dark:to-sky-800/15 rounded-full animate-pulse" style={{ animationDelay: "2s" }}></div>
+        {/* Moving gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 via-cyan-100/30 to-blue-100/20 animate-pulse-slow"></div>
         
-        {/* Floating particles */}
-        <div className="absolute top-20 left-20 animate-float opacity-20">
-          <Code className="h-8 w-8 text-blue-500" />
+        {/* Floating geometric shapes */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-200/40 to-cyan-200/40 rounded-full animate-float"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-cyan-200/30 to-blue-200/30 rounded-full animate-pulse-slow"></div>
+        <div className="absolute bottom-32 left-1/4 w-28 h-28 bg-gradient-to-br from-teal-200/35 to-cyan-200/35 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 right-1/3 w-20 h-20 bg-gradient-to-br from-blue-300/30 to-cyan-300/30 rounded-full animate-pulse-slow" style={{animationDelay: '1s'}}></div>
+        
+        {/* Animated particles */}
+        <div className="absolute top-60 left-1/2 animate-float opacity-30" style={{animationDelay: '3s'}}>
+          <Code className="h-8 w-8 text-blue-400" />
         </div>
-        <div className="absolute top-40 right-32 animate-float opacity-20" style={{ animationDelay: "1s" }}>
-          <Database className="h-6 w-6 text-indigo-500" />
+        <div className="absolute top-80 right-32 animate-float opacity-30" style={{animationDelay: '1.5s'}}>
+          <Database className="h-6 w-6 text-cyan-400" />
         </div>
-        <div className="absolute bottom-32 left-1/3 animate-float opacity-20" style={{ animationDelay: "3s" }}>
-          <Globe className="h-7 w-7 text-cyan-500" />
-        </div>
-        <div className="absolute top-60 left-1/2 animate-float opacity-20" style={{ animationDelay: "2s" }}>
-          <Award className="h-5 w-5 text-purple-500" />
-        </div>
+        
+        {/* Flowing lines */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-100/10 to-transparent animate-pulse-slow"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Enhanced Header Section with Typing Animation */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      {/* Main Content */}
+      <div className="relative z-10 px-6 pt-32 pb-20">
+        {/* Enhanced Header Section with Word-by-Word Animation */}
+        <div className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <div className="mb-8">
             <img 
               src="/lovable-uploads/8ab75cab-7ad6-402c-8813-a757538bc869.png" 
               alt="Susan Acharya"
-              className="w-40 h-40 rounded-full mx-auto shadow-2xl border-4 border-white dark:border-slate-700 animate-fade-in hover:scale-110 transition-transform duration-300"
+              className="w-40 h-40 rounded-full mx-auto shadow-2xl border-4 border-white animate-fade-in hover:scale-110 transition-transform duration-300"
             />
           </div>
           
           <div className="mb-6">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent min-h-[80px] flex items-center justify-center">
-              {typedText}<span className="animate-pulse">|</span>
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 min-h-[80px] flex items-center justify-center animate-fade-in" 
+                style={{animationDelay: '0.2s', fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+              {typedText.split(' ').map((word, index) => (
+                <span key={index} className="inline-block animate-fade-in mr-3" style={{animationDelay: `${0.2 + index * 0.3}s`}}>
+                  {word}
+                </span>
+              ))}
+              <span className="animate-pulse text-[#00bcd4]">|</span>
             </h1>
           </div>
           
-          <p className="text-2xl text-black dark:text-white font-semibold mb-2 animate-fade-in" style={{ animationDelay: "3s" }}>
+          <h2 className="text-2xl text-black mb-6 animate-fade-in" 
+              style={{animationDelay: '0.8s', fontFamily: 'Poppins, sans-serif'}}>
             Junior Django & Python Developer
+          </h2>
+          
+          <p className="text-lg text-black max-w-2xl mx-auto leading-relaxed animate-fade-in mb-8" 
+             style={{animationDelay: '1s', fontFamily: 'Inter, sans-serif', fontWeight: 400}}>
+            Motivated junior Python and web developer with hands-on experience building scalable, 
+            user-friendly web applications using Django and Python. Strong problem solver and team player.
           </p>
           
-          <p className="text-lg text-black/80 dark:text-white/80 max-w-4xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: "3.2s" }}>
-            Motivated junior Python and web developer with hands-on experience building scalable, user-friendly web applications using Django and Python. Skilled in RESTful API design, modern web technologies, and responsive design. Strong problem solver and team player. Currently pursuing a BSc in Computer Science and Information Technology. Seeking opportunities to contribute and grow as a developer.
-          </p>
-          
-          {/* Contact Info */}
-          <div className="flex flex-wrap justify-center gap-6 mb-8 animate-fade-in" style={{ animationDelay: "3.4s" }}>
-            <div className="flex items-center gap-2 text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              <Mail className="h-5 w-5" />
-              <span>susanacharya.sp@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-2 text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              <Phone className="h-5 w-5" />
-              <span>+977 9824562967</span>
-            </div>
-            <div className="flex items-center gap-2 text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              <MapPin className="h-5 w-5" />
-              <span>Nepal</span>
-            </div>
-          </div>
-          
-          {/* Social Links & Resume */}
-          <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "3.6s" }}>
-            <Button variant="outline" size="sm" asChild className="hover:scale-105 transition-transform text-black dark:text-white border-black/20 dark:border-white/20">
-              <a href="https://www.linkedin.com/in/susan-acharya1618" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-4 w-4 mr-2" />
-                LinkedIn
-              </a>
-            </Button>
-            <Button variant="outline" size="sm" asChild className="hover:scale-105 transition-transform text-black dark:text-white border-black/20 dark:border-white/20">
-              <a href="https://github.com/susanacharya12" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
-                GitHub
-              </a>
-            </Button>
-            <Button variant="default" size="sm" asChild className="hover:scale-105 transition-transform bg-blue-600 hover:bg-blue-700">
-              <a href="https://drive.google.com/file/d/13DoHYjq6JXhnMH5o8w0pyyZ7GnZaPRIw/view?usp=share_link" target="_blank" rel="noopener noreferrer">
-                <Download className="h-4 w-4 mr-2" />
-                Download CV
-              </a>
-            </Button>
+          {/* Download CV Button */}
+          <div className="animate-fade-in" style={{animationDelay: '1.2s'}}>
+            <a 
+              href="https://drive.google.com/file/d/13DoHYjq6JXhnMH5o8w0pyyZ7GnZaPRIw/view?usp=share_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-full hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              style={{fontFamily: 'Inter, sans-serif'}}
+            >
+              <Download className="mr-2 h-5 w-5" />
+              Download CV
+            </a>
           </div>
         </div>
 
-        {/* Enhanced Projects Section */}
-        <section className="mb-20">
-          <h2 className="text-4xl font-bold text-center text-black dark:text-white mb-12 animate-fade-in">
-            💻 Featured Projects
+        {/* Featured Projects Section */}
+        <div id="projects" className="max-w-6xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Featured Projects
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <Card 
                 key={index} 
-                className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-2 hover:border-blue-300 dark:hover:border-blue-600 animate-fade-in hover:scale-[1.02]`}
-                style={{ animationDelay: `${1 + index * 0.2}s` }}
+                className={`group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-2 hover:border-blue-300 animate-fade-in hover:scale-[1.02]`}
+                style={{ animationDelay: `${1.4 + index * 0.2}s` }}
               >
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    <div className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-800/70 transition-colors">
+                  <CardTitle className="flex items-center gap-3 text-black group-hover:text-blue-600 transition-colors"
+                             style={{fontFamily: 'Poppins, sans-serif'}}>
+                    <div className="p-2 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
                       {project.icon}
                     </div>
                     {project.title}
@@ -268,15 +218,16 @@ export default function SusanPortfolio() {
                       className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <p className="text-black/80 dark:text-white/80 mb-4">
+                  <p className="text-black/80 mb-4" style={{fontFamily: 'Inter, sans-serif'}}>
                     {project.description}
                   </p>
                   
                   <div className="mb-4">
-                    <h4 className="font-semibold text-black dark:text-white mb-2">Technologies:</h4>
+                    <h4 className="font-semibold text-black mb-2" style={{fontFamily: 'Poppins, sans-serif'}}>Technologies:</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="secondary" className="hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors">
+                        <Badge key={techIndex} variant="secondary" className="hover:bg-blue-100 transition-colors"
+                               style={{fontFamily: 'Inter, sans-serif'}}>
                           {tech}
                         </Badge>
                       ))}
@@ -284,10 +235,11 @@ export default function SusanPortfolio() {
                   </div>
                   
                   <div className="mb-6">
-                    <h4 className="font-semibold text-black dark:text-white mb-2">Key Features:</h4>
+                    <h4 className="font-semibold text-black mb-2" style={{fontFamily: 'Poppins, sans-serif'}}>Key Features:</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.features.map((feature, featureIndex) => (
-                        <Badge key={featureIndex} variant="outline" className="hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors">
+                        <Badge key={featureIndex} variant="outline" className="hover:bg-blue-50 transition-colors"
+                               style={{fontFamily: 'Inter, sans-serif'}}>
                           {feature}
                         </Badge>
                       ))}
@@ -297,12 +249,14 @@ export default function SusanPortfolio() {
                   {/* Project Links */}
                   <div className="flex gap-3">
                     <Button variant="outline" size="sm" asChild className="flex-1">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer"
+                         style={{fontFamily: 'Inter, sans-serif'}}>
                         <Github className="h-4 w-4 mr-2" />
                         GitHub
                       </a>
                     </Button>
-                    <Button variant="outline" size="sm" disabled className="flex-1 opacity-60">
+                    <Button variant="outline" size="sm" disabled className="flex-1 opacity-60"
+                            style={{fontFamily: 'Inter, sans-serif'}}>
                       <Globe className="h-4 w-4 mr-2" />
                       {project.demo}
                     </Button>
@@ -311,194 +265,463 @@ export default function SusanPortfolio() {
               </Card>
             ))}
           </div>
-        </section>
+        </div>
 
-        {/* Enhanced Skills Section */}
-        <section className="mb-20">
-          <h2 className="text-4xl font-bold text-center text-black dark:text-white mb-12 animate-fade-in">
-            ⚙️ Skills & Technologies
+        {/* Skills & Technologies Section */}
+        <div id="skills" className="max-w-6xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Skills & Technologies
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {Object.entries(skills).map(([category, skillList], index) => (
-              <Card 
-                key={category} 
-                className={`hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm animate-fade-in hover:scale-105`}
-                style={{ animationDelay: `${2 + index * 0.1}s` }}
-              >
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-black dark:text-white text-lg">
-                    {category === 'frontend' && '🖥️ Frontend'}
-                    {category === 'backend' && '🛠️ Backend'}
-                    {category === 'databases' && '🗄️ Databases'}
-                    {category === 'tools' && '🧰 Tools'}
-                    {category === 'softSkills' && '💡 Soft Skills'}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    {skillList.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="flex items-center gap-2 text-black dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="text-sm">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+            {/* Frontend */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <h3 className="text-xl font-semibold mb-4 flex items-center"
+                  style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+                <Monitor className="mr-2 h-5 w-5" />
+                Frontend
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  HTML5
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  CSS3
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  JavaScript
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Bootstrap
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Responsive Design
+                </div>
+              </div>
+            </div>
 
-        {/* Enhanced Education Section */}
-        <section className="mb-20">
-          <Card className="hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm animate-fade-in hover:scale-105" style={{ animationDelay: "2.5s" }}>
-            <CardHeader>
-              <CardTitle className="text-black dark:text-white flex items-center gap-2 text-2xl">
-                <GraduationCap className="h-6 w-6" />
-                🎓 Education
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="mb-4">
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-2">
-                  🎓 B.Sc. in Computer Science and Information Technology (CSIT)
-                </h3>
-                <p className="text-lg text-black/80 dark:text-white/80 mb-2">
-                  📍 <span className="font-semibold">Bhaktapur Multiple Campus</span>
-                </p>
-                <p className="text-black/70 dark:text-white/70 mb-2">
-                  Affiliated to <span className="font-semibold">Institute of Science and Technology (IOST)</span>, <span className="font-semibold">Tribhuvan University</span>
-                </p>
-                <p className="text-blue-600 dark:text-blue-400 font-semibold">
-                  📅 Currently Pursuing
-                </p>
+            {/* Backend */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <h3 className="text-xl font-semibold mb-4 flex items-center"
+                  style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+                <Server className="mr-2 h-5 w-5" />
+                Backend
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Python
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Django
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Django REST Framework
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  RESTful APIs
+                </div>
+              </div>
+            </div>
+
+            {/* Databases */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <h3 className="text-xl font-semibold mb-4 flex items-center"
+                  style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+                <Database className="mr-2 h-5 w-5" />
+                Databases
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  MySQL
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  SQLite3
+                </div>
+              </div>
+            </div>
+
+            {/* Tools */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <h3 className="text-xl font-semibold mb-4 flex items-center"
+                  style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+                <Code className="mr-2 h-5 w-5" />
+                Tools
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  Git & GitHub
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  VS Code
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  PyCharm
+                </div>
+              </div>
+            </div>
+
+            {/* Soft Skills */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <h3 className="text-xl font-semibold mb-4 flex items-center"
+                  style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+                <Heart className="mr-2 h-5 w-5" />
+                Soft Skills
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  🧠 Problem Solving
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  🤝 Team Collaboration
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  🗣️ Communication
+                </div>
+                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                  🔄 Adaptability
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Education Section */}
+        <div id="education" className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Education
+          </h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold mb-2"
+                  style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+                BSc. Computer Science and Information Technology
+              </h3>
+              <p className="text-lg text-gray-600 mb-4" style={{fontFamily: 'Inter, sans-serif'}}>
+                📍 Bhaktapur Multiple Campus, Tribhuvan University (IOST)
+              </p>
+              <p className="text-lg font-semibold text-blue-600 mb-6" style={{fontFamily: 'Inter, sans-serif'}}>
+                📅 Currently Pursuing
+              </p>
+              
+              <p className="text-gray-700 mb-8 leading-relaxed" style={{fontFamily: 'Inter, sans-serif'}}>
+                The BSc. CSIT program is a four-year undergraduate degree blending theoretical knowledge and 
+                practical skills in computing, software development, and IT. It prepares students for both 
+                advanced studies and professional careers in the tech industry.
+              </p>
+              
+              <div className="mt-8">
+                <h4 className="text-lg font-semibold text-gray-800 mb-4" 
+                    style={{fontFamily: 'Poppins, sans-serif'}}>Core Subjects:</h4>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Data Structures & Algorithms</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Web Technologies</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Database Management Systems</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Operating Systems</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Software Engineering</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Object-Oriented Programming</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Computer Networks</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Java</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>.NET</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Computer Graphics</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Computer Architecture</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-2 rounded-full" style={{fontFamily: 'Inter, sans-serif'}}>Database Management System</span>
+                </div>
               </div>
               
-              <h4 className="font-semibold text-black dark:text-white mb-3">Core Subjects:</h4>
-              <div className="grid md:grid-cols-2 gap-2">
-                {coreSubjects.map((subject, index) => (
-                  <Badge key={index} variant="outline" className="justify-start p-2">
-                    {subject}
-                  </Badge>
-                ))}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <h4 className="text-lg font-semibold text-gray-800 mb-2" style={{fontFamily: 'Poppins, sans-serif'}}>
+                  +2 Science
+                </h4>
+                <p className="text-gray-600" style={{fontFamily: 'Inter, sans-serif'}}>
+                  Sudurpaschimanchal Academy
+                </p>
               </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Enhanced Certificates Section */}
-        <section className="mb-20">
-          <h2 className="text-4xl font-bold text-center text-black dark:text-white mb-12 animate-fade-in">
-            📜 Certificates
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {certificates.map((cert, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm animate-fade-in hover:scale-105 p-6"
-                style={{ animationDelay: `${3 + index * 0.1}s` }}
-              >
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-black dark:text-white text-lg">{cert.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-black/80 dark:text-white/80 mb-4">{cert.description}</p>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={cert.link} target="_blank" rel="noopener noreferrer">
-                      🔗 View Certificate
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+            </div>
           </div>
-        </section>
+        </div>
+
+        {/* Certificates Section */}
+        <div id="certificates" className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Certificates
+          </h2>
+          <div className="space-y-6">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <div className="flex items-start space-x-4">
+                <div className="bg-green-100 p-2 rounded-lg min-w-[40px]">
+                  <Award className="h-6 w-6 text-green-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2" 
+                      style={{fontFamily: 'Poppins, sans-serif'}}>
+                    Python For Beginners – Learn All The Basics Of Python
+                  </h3>
+                  <a 
+                    href="https://www.udemy.com/certificate/UC-175f7a52-2f5f-486c-a9d4-039f953669ef/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
+                    style={{fontFamily: 'Inter, sans-serif'}}
+                  >
+                    🔗 View Certificate
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <div className="flex items-start space-x-4">
+                <div className="bg-blue-100 p-2 rounded-lg min-w-[40px]">
+                  <Award className="h-6 w-6 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2"
+                      style={{fontFamily: 'Poppins, sans-serif'}}>
+                    Python For Data Science – Real Time Exercises
+                  </h3>
+                  <a 
+                    href="https://www.udemy.com/certificate/UC-175f7a52-2f5f-486c-a9d4-039f953669ef/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
+                    style={{fontFamily: 'Inter, sans-serif'}}
+                  >
+                    🔗 View Certificate
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <div className="flex items-start space-x-4">
+                <div className="bg-purple-100 p-2 rounded-lg min-w-[40px]">
+                  <Trophy className="h-6 w-6 text-purple-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2"
+                      style={{fontFamily: 'Poppins, sans-serif'}}>
+                    Hackathon Certificate
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-2" style={{fontFamily: 'Inter, sans-serif'}}>
+                    Participated in a 48-hour hackathon organized by Code Yatra at Himalayan College of Engineering
+                  </p>
+                  <a 
+                    href="https://www.linkedin.com/in/susan-acharya1618?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
+                    style={{fontFamily: 'Inter, sans-serif'}}
+                  >
+                    🔗 LinkedIn Proof
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Achievements Section */}
-        <section className="mb-20">
-          <Card className="hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm animate-fade-in hover:scale-105" style={{ animationDelay: "3.5s" }}>
-            <CardHeader>
-              <CardTitle className="text-black dark:text-white flex items-center gap-2 text-2xl">
-                <Trophy className="h-6 w-6" />
-                🏆 Achievements
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-black/80 dark:text-white/80">
-                {achievements.map((achievement, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <span className="text-yellow-500 mt-1">⭐</span>
-                    <span>{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </section>
+        <div id="achievements" className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Achievements
+          </h2>
+          <div className="space-y-6">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 animate-fade-in">
+              <div className="flex items-center space-x-4">
+                <div className="bg-yellow-100 p-3 rounded-full">
+                  <Trophy className="h-8 w-8 text-yellow-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2"
+                      style={{fontFamily: 'Poppins, sans-serif'}}>
+                    Selected as Top 15 Finalist at Code Yatra Hackathon 2024
+                  </h3>
+                  <p className="text-gray-600" style={{fontFamily: 'Inter, sans-serif'}}>
+                    Outstanding performance in a competitive 48-hour hackathon at Himalayan College of Engineering
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 animate-fade-in">
+              <div className="flex items-center space-x-4">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <Code className="h-8 w-8 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2"
+                      style={{fontFamily: 'Poppins, sans-serif'}}>
+                    Built multiple real-world Django-based projects hosted on GitHub
+                  </h3>
+                  <p className="text-gray-600" style={{fontFamily: 'Inter, sans-serif'}}>
+                    Developed and deployed full-stack web applications demonstrating practical programming skills
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Let's Connect Section */}
+        <div id="connect" className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Let's Connect
+          </h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+            <div className="text-center mb-8">
+              <p className="text-lg text-gray-700 mb-4" style={{fontFamily: 'Inter, sans-serif'}}>
+                I'm always interested in new opportunities and collaborations.
+              </p>
+              <p className="text-lg text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                Feel free to reach out if you'd like to discuss a project or just say hello.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <Mail className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-gray-800" style={{fontFamily: 'Poppins, sans-serif'}}>Email</h3>
+                <a href="mailto:susanacharya.sp@gmail.com" 
+                   className="text-blue-600 hover:text-blue-800 text-sm" 
+                   style={{fontFamily: 'Inter, sans-serif'}}>
+                  susanacharya.sp@gmail.com
+                </a>
+              </div>
+              
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <Phone className="h-6 w-6 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-gray-800" style={{fontFamily: 'Poppins, sans-serif'}}>Phone</h3>
+                <p className="text-gray-600 text-sm" style={{fontFamily: 'Inter, sans-serif'}}>+977 9824562967</p>
+              </div>
+              
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-purple-100 p-3 rounded-full">
+                  <MapPin className="h-6 w-6 text-purple-600" />
+                </div>
+                <h3 className="font-semibold text-gray-800" style={{fontFamily: 'Poppins, sans-serif'}}>Location</h3>
+                <p className="text-gray-600 text-sm" style={{fontFamily: 'Inter, sans-serif'}}>Nepal</p>
+              </div>
+            </div>
+            
+            <form className="mt-8 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2" 
+                         style={{fontFamily: 'Inter, sans-serif'}}>Your Name</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your name"
+                    style={{fontFamily: 'Inter, sans-serif'}}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2"
+                         style={{fontFamily: 'Inter, sans-serif'}}>Email Address</label>
+                  <input 
+                    type="email" 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Enter your email"
+                    style={{fontFamily: 'Inter, sans-serif'}}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2"
+                       style={{fontFamily: 'Inter, sans-serif'}}>Subject</label>
+                <input 
+                  type="text" 
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Enter subject"
+                  style={{fontFamily: 'Inter, sans-serif'}}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2"
+                       style={{fontFamily: 'Inter, sans-serif'}}>Message</label>
+                <textarea 
+                  rows={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                  placeholder="Enter your message"
+                  style={{fontFamily: 'Inter, sans-serif'}}
+                ></textarea>
+              </div>
+              <div className="text-center">
+                <button 
+                  type="submit"
+                  className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-full hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  style={{fontFamily: 'Inter, sans-serif'}}
+                >
+                  <Send className="mr-2 h-5 w-5" />
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
 
         {/* Languages Section */}
-        <section className="mb-20">
-          <Card className="hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm animate-fade-in hover:scale-105" style={{ animationDelay: "3.7s" }}>
-            <CardHeader>
-              <CardTitle className="text-black dark:text-white flex items-center gap-2 text-2xl">
-                <Languages className="h-6 w-6" />
-                🌐 Languages
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-4">
-                {languages.map((language, index) => (
-                  <div key={index} className="flex flex-col items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <span className="text-lg font-semibold text-black dark:text-white">{language.name}</span>
-                    <Badge variant="secondary">{language.level}</Badge>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Contact Form Section */}
-        <section className="mb-16">
-          <Card className="hover:shadow-xl transition-all duration-300 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm animate-fade-in hover:scale-105" style={{ animationDelay: "4s" }}>
-            <CardHeader>
-              <CardTitle className="text-black dark:text-white flex items-center gap-2 text-2xl">
-                <Send className="h-6 w-6" />
-                📬 Get in Touch
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <div>
-                    <Label htmlFor="name" className="text-black dark:text-white">Your Name</Label>
-                    <Input id="name" placeholder="Enter your name" className="mt-1" />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="text-black dark:text-white">Email Address</Label>
-                    <Input id="email" type="email" placeholder="Enter your email" className="mt-1" />
-                  </div>
-                  <div>
-                    <Label htmlFor="subject" className="text-black dark:text-white">Subject</Label>
-                    <Input id="subject" placeholder="Enter subject" className="mt-1" />
-                  </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+            <h3 className="text-2xl font-bold text-center mb-6"
+                style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+              Languages
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <Globe className="h-6 w-6 text-blue-600" />
                 </div>
-                <div className="space-y-4">
-                  <div>
-                    <Label htmlFor="message" className="text-black dark:text-white">Message</Label>
-                    <Textarea id="message" placeholder="Enter your message" className="mt-1 min-h-[120px]" />
-                  </div>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                    <Send className="h-4 w-4 mr-2" />
-                    Send Message
-                  </Button>
-                </div>
+                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>English</span>
+                <span className="text-blue-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Fluent</span>
               </div>
-            </CardContent>
-          </Card>
-        </section>
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <Globe className="h-6 w-6 text-green-600" />
+                </div>
+                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Nepali</span>
+                <span className="text-green-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Native</span>
+              </div>
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-orange-100 p-3 rounded-full">
+                  <Globe className="h-6 w-6 text-orange-600" />
+                </div>
+                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Hindi</span>
+                <span className="text-orange-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Intermediate</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
