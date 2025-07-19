@@ -651,6 +651,38 @@ export default function SusanPortfolio() {
           </div>
         </div>
 
+        {/* Languages Section */}
+        <div className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Languages
+          </h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <Languages className="h-6 w-6 text-blue-600" />
+                </div>
+                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>English</span>
+                <span className="text-blue-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Fluent</span>
+              </div>
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <Languages className="h-6 w-6 text-green-600" />
+                </div>
+                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Nepali</span>
+                <span className="text-green-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Native</span>
+              </div>
+              <div className="flex flex-col items-center space-y-2">
+                <div className="bg-orange-100 p-3 rounded-full">
+                  <Languages className="h-6 w-6 text-orange-600" />
+                </div>
+                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Hindi</span>
+                <span className="text-orange-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Intermediate</span>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Let's Connect Section */}
         <div id="connect" className="max-w-4xl mx-auto mb-20">
           <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
@@ -761,39 +793,6 @@ export default function SusanPortfolio() {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-        
-        {/* Languages Section */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
-            Languages
-          </h2>
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div className="flex flex-col items-center space-y-2">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Languages className="h-6 w-6 text-blue-600" />
-                </div>
-                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>English</span>
-                <span className="text-blue-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Fluent</span>
-              </div>
-              <div className="flex flex-col items-center space-y-2">
-                <div className="bg-green-100 p-3 rounded-full">
-                  <Languages className="h-6 w-6 text-green-600" />
-                </div>
-                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Nepali</span>
-                <span className="text-green-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Native</span>
-              </div>
-              <div className="flex flex-col items-center space-y-2">
-                <div className="bg-orange-100 p-3 rounded-full">
-                  <Languages className="h-6 w-6 text-orange-600" />
-                </div>
-                <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Hindi</span>
-                <span className="text-orange-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Intermediate</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
