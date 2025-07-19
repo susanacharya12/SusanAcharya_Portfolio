@@ -14,7 +14,7 @@ import pythonProjectsImage from "@/assets/python-projects.jpg";
 export default function SusanPortfolio() {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState("");
-  const introText = "Hi I am Susan Acharya";
+  const introText = "Susan Acharya";
 
   useEffect(() => {
     setIsVisible(true);
@@ -95,13 +95,13 @@ export default function SusanPortfolio() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 relative overflow-hidden" style={{fontFamily: 'Inter, sans-serif'}}>
       {/* Fixed Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex justify-center space-x-8">
+        <div className="container mx-auto px-4 md:px-6 py-4">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {navigationSections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className="text-black hover:text-[#00bcd4] transition-colors duration-300 font-medium"
+                className="text-black hover:text-[#00bcd4] transition-colors duration-300 font-medium text-sm md:text-base"
                 style={{fontFamily: 'Inter, sans-serif'}}
               >
                 {section.label}
@@ -135,7 +135,7 @@ export default function SusanPortfolio() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-6 pt-32 pb-20">
+      <div className="relative z-10 px-4 md:px-6 pt-32 pb-20">
         {/* Enhanced Header Section with Word-by-Word Animation */}
         <div className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -148,38 +148,31 @@ export default function SusanPortfolio() {
             />
           </div>
           
-          {/* Name positioned top-left */}
-          <div className="text-left mb-8">
-            <h1 className="text-5xl md:text-6xl font-bold animate-fade-in" 
-                style={{animationDelay: '0.2s', fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
-              Susan Acharya
-            </h1>
-          </div>
-          
+          {/* Animated Name */}
           <div className="mb-6">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 min-h-[80px] flex items-center justify-center animate-fade-in" 
-                style={{animationDelay: '0.4s', fontFamily: 'Poppins, sans-serif', color: '#000'}}>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 min-h-[80px] flex items-center justify-center animate-fade-in" 
+                style={{animationDelay: '0.2s', fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
               {typedText.split(' ').map((word, index) => (
-                <span key={index} className="inline-block animate-fade-in mr-3" style={{animationDelay: `${0.4 + index * 0.3}s`}}>
+                <span key={index} className="inline-block animate-fade-in mr-3" style={{animationDelay: `${0.2 + index * 0.3}s`}}>
                   {word}
                 </span>
               ))}
               <span className="animate-pulse text-[#00bcd4]">|</span>
-            </h2>
+            </h1>
           </div>
           
-          <h3 className="text-2xl text-black mb-6 animate-fade-in" 
+          <h2 className="text-2xl text-[#00bcd4] mb-6 animate-fade-in" 
               style={{animationDelay: '0.8s', fontFamily: 'Poppins, sans-serif'}}>
             Junior Django & Python Developer
-          </h3>
+          </h2>
           
           {/* Social Links */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in" style={{animationDelay: '1s'}}>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8 animate-fade-in" style={{animationDelay: '1s'}}>
             <a 
               href="https://drive.google.com/file/d/13DoHYjq6JXhnMH5o8w0pyyZ7GnZaPRIw/view?usp=share_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-full hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-full hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               style={{fontFamily: 'Inter, sans-serif'}}
             >
               <Download className="mr-2 h-4 w-4" />
@@ -189,7 +182,7 @@ export default function SusanPortfolio() {
               href="https://www.linkedin.com/in/susan-acharya1618?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               style={{fontFamily: 'Inter, sans-serif'}}
             >
               <Linkedin className="mr-2 h-4 w-4" />
@@ -199,7 +192,7 @@ export default function SusanPortfolio() {
               href="https://github.com/susanacharya12"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               style={{fontFamily: 'Inter, sans-serif'}}
             >
               <Github className="mr-2 h-4 w-4" />
@@ -209,31 +202,27 @@ export default function SusanPortfolio() {
         </div>
 
         {/* About Me Section */}
-        <div id="about" className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-8 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div id="about" className="max-w-4xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             About Me
           </h2>
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white/50 animate-fade-in">
-            <p className="text-lg text-black max-w-4xl mx-auto leading-relaxed" 
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-lg border border-white/50 animate-fade-in">
+            <p className="text-lg text-black max-w-4xl mx-auto leading-relaxed text-center" 
                style={{fontFamily: 'Inter, sans-serif', fontWeight: 400}}>
-              Motivated junior Python and web developer with hands-on experience building scalable, 
-              user-friendly web applications using Django and Python. Skilled in RESTful API design, 
-              modern web technologies, and responsive design. Strong problem solver and team player. 
-              Currently pursuing an undergraduate degree in BSc. CSIT. Seeking opportunities to contribute 
-              and grow as a developer.
+              Motivated Python developer building scalable web applications with Django. Passionate about clean code and innovative solutions.
             </p>
           </div>
         </div>
 
         {/* Featured Projects Section */}
-        <div id="projects" className="max-w-6xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div id="projects" className="max-w-6xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             Featured Projects
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {projects.map((project, index) => (
               <Card 
                 key={index} 
@@ -287,7 +276,7 @@ export default function SusanPortfolio() {
                   </div>
 
                   {/* Project Links */}
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Button variant="outline" size="sm" asChild className="flex-1">
                       <a href={project.github} target="_blank" rel="noopener noreferrer"
                          style={{fontFamily: 'Inter, sans-serif'}}>
@@ -308,13 +297,13 @@ export default function SusanPortfolio() {
         </div>
 
         {/* Skills & Technologies Section */}
-        <div id="skills" className="max-w-6xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div id="skills" className="max-w-6xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             Skills & Technologies
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
             {/* Frontend */}
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
               <h3 className="text-xl font-semibold mb-4 flex items-center"
@@ -445,9 +434,9 @@ export default function SusanPortfolio() {
         </div>
 
         {/* Education Section */}
-        <div id="education" className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div id="education" className="max-w-4xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             Education
           </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
@@ -501,9 +490,9 @@ export default function SusanPortfolio() {
         </div>
 
         {/* Certificates Section */}
-        <div id="certificates" className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div id="certificates" className="max-w-4xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             Certificates
           </h2>
           <div className="space-y-6">
@@ -609,9 +598,9 @@ export default function SusanPortfolio() {
         </div>
 
         {/* Achievements Section */}
-        <div id="achievements" className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div id="achievements" className="max-w-4xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             Achievements
           </h2>
           <div className="space-y-6">
@@ -652,9 +641,9 @@ export default function SusanPortfolio() {
         </div>
 
         {/* Languages Section */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div className="max-w-4xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             Languages
           </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
@@ -684,9 +673,9 @@ export default function SusanPortfolio() {
           </div>
         </div>
         {/* Let's Connect Section */}
-        <div id="connect" className="max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
-              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+        <div id="connect" className="max-w-4xl mx-auto mb-20 px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#000000'}}>
             Let's Connect
           </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
