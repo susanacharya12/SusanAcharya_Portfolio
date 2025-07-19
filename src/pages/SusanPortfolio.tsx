@@ -148,41 +148,81 @@ export default function SusanPortfolio() {
             />
           </div>
           
-          <div className="mb-6">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 min-h-[80px] flex items-center justify-center animate-fade-in" 
+          {/* Name positioned top-left */}
+          <div className="text-left mb-8">
+            <h1 className="text-5xl md:text-6xl font-bold animate-fade-in" 
                 style={{animationDelay: '0.2s', fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+              Susan Acharya
+            </h1>
+          </div>
+          
+          <div className="mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 min-h-[80px] flex items-center justify-center animate-fade-in" 
+                style={{animationDelay: '0.4s', fontFamily: 'Poppins, sans-serif', color: '#000'}}>
               {typedText.split(' ').map((word, index) => (
-                <span key={index} className="inline-block animate-fade-in mr-3" style={{animationDelay: `${0.2 + index * 0.3}s`}}>
+                <span key={index} className="inline-block animate-fade-in mr-3" style={{animationDelay: `${0.4 + index * 0.3}s`}}>
                   {word}
                 </span>
               ))}
               <span className="animate-pulse text-[#00bcd4]">|</span>
-            </h1>
+            </h2>
           </div>
           
-          <h2 className="text-2xl text-black mb-6 animate-fade-in" 
+          <h3 className="text-2xl text-black mb-6 animate-fade-in" 
               style={{animationDelay: '0.8s', fontFamily: 'Poppins, sans-serif'}}>
             Junior Django & Python Developer
-          </h2>
+          </h3>
           
-          <p className="text-lg text-black max-w-2xl mx-auto leading-relaxed animate-fade-in mb-8" 
-             style={{animationDelay: '1s', fontFamily: 'Inter, sans-serif', fontWeight: 400}}>
-            Motivated junior Python and web developer with hands-on experience building scalable, 
-            user-friendly web applications using Django and Python. Strong problem solver and team player.
-          </p>
-          
-          {/* Download CV Button */}
-          <div className="animate-fade-in" style={{animationDelay: '1.2s'}}>
+          {/* Social Links */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in" style={{animationDelay: '1s'}}>
             <a 
               href="https://drive.google.com/file/d/13DoHYjq6JXhnMH5o8w0pyyZ7GnZaPRIw/view?usp=share_link"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-full hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-full hover:from-blue-700 hover:to-cyan-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               style={{fontFamily: 'Inter, sans-serif'}}
             >
-              <Download className="mr-2 h-5 w-5" />
+              <Download className="mr-2 h-4 w-4" />
               Download CV
             </a>
+            <a 
+              href="https://www.linkedin.com/in/susan-acharya1618?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              style={{fontFamily: 'Inter, sans-serif'}}
+            >
+              <Linkedin className="mr-2 h-4 w-4" />
+              LinkedIn
+            </a>
+            <a 
+              href="https://github.com/susanacharya12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              style={{fontFamily: 'Inter, sans-serif'}}
+            >
+              <Github className="mr-2 h-4 w-4" />
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        {/* About Me Section */}
+        <div id="about" className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-8 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            About Me
+          </h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-white/50 animate-fade-in">
+            <p className="text-lg text-black max-w-4xl mx-auto leading-relaxed" 
+               style={{fontFamily: 'Inter, sans-serif', fontWeight: 400}}>
+              Motivated junior Python and web developer with hands-on experience building scalable, 
+              user-friendly web applications using Django and Python. Skilled in RESTful API design, 
+              modern web technologies, and responsive design. Strong problem solver and team player. 
+              Currently pursuing an undergraduate degree in BSc. CSIT. Seeking opportunities to contribute 
+              and grow as a developer.
+            </p>
           </div>
         </div>
 
@@ -383,22 +423,22 @@ export default function SusanPortfolio() {
                 Soft Skills
               </h3>
               <div className="space-y-2">
-                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  🧠 Problem Solving
-                </div>
-                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  🤝 Team Collaboration
-                </div>
-                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  🗣️ Communication
-                </div>
-                <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  🔄 Adaptability
-                </div>
+                 <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                   <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                   Problem Solving
+                 </div>
+                 <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                   <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                   Team Collaboration
+                 </div>
+                 <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                   <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                   Communication
+                 </div>
+                 <div className="flex items-center text-gray-700" style={{fontFamily: 'Inter, sans-serif'}}>
+                   <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                   Adaptability
+                 </div>
               </div>
             </div>
           </div>
@@ -412,16 +452,16 @@ export default function SusanPortfolio() {
           </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-2"
-                  style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
-                BSc. Computer Science and Information Technology
-              </h3>
-              <p className="text-lg text-gray-600 mb-4" style={{fontFamily: 'Inter, sans-serif'}}>
-                📍 Bhaktapur Multiple Campus, Tribhuvan University (IOST)
-              </p>
-              <p className="text-lg font-semibold text-blue-600 mb-6" style={{fontFamily: 'Inter, sans-serif'}}>
-                📅 Currently Pursuing
-              </p>
+               <h3 className="text-2xl font-bold mb-2"
+                   style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+                 BSc. Computer Science and Information Technology
+               </h3>
+               <p className="text-lg text-gray-600 mb-4" style={{fontFamily: 'Inter, sans-serif'}}>
+                 Bhaktapur Multiple Campus, Tribhuvan University (IOST)
+               </p>
+               <p className="text-lg font-semibold text-blue-600 mb-6" style={{fontFamily: 'Inter, sans-serif'}}>
+                 Currently Pursuing
+               </p>
               
               <p className="text-gray-700 mb-8 leading-relaxed" style={{fontFamily: 'Inter, sans-serif'}}>
                 The BSc. CSIT program is a four-year undergraduate degree blending theoretical knowledge and 
@@ -475,6 +515,30 @@ export default function SusanPortfolio() {
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-gray-800 mb-2" 
                       style={{fontFamily: 'Poppins, sans-serif'}}>
+                    Python Programming: Python Bootcamp For Beginner
+                  </h3>
+                  <a 
+                    href="https://www.udemy.com/certificate/UC-0bffe5ad-cd58-40fd-ab5d-a536fd3c6837/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
+                    style={{fontFamily: 'Inter, sans-serif'}}
+                  >
+                    View Certificate
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
+              <div className="flex items-start space-x-4">
+                <div className="bg-green-100 p-2 rounded-lg min-w-[40px]">
+                  <Award className="h-6 w-6 text-green-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2" 
+                      style={{fontFamily: 'Poppins, sans-serif'}}>
                     Python For Beginners – Learn All The Basics Of Python
                   </h3>
                   <a 
@@ -484,7 +548,7 @@ export default function SusanPortfolio() {
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
                     style={{fontFamily: 'Inter, sans-serif'}}
                   >
-                    🔗 View Certificate
+                    View Certificate
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 </div>
@@ -508,7 +572,7 @@ export default function SusanPortfolio() {
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
                     style={{fontFamily: 'Inter, sans-serif'}}
                   >
-                    🔗 View Certificate
+                    View Certificate
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 </div>
@@ -535,7 +599,7 @@ export default function SusanPortfolio() {
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium inline-flex items-center"
                     style={{fontFamily: 'Inter, sans-serif'}}
                   >
-                    🔗 LinkedIn Proof
+                    LinkedIn Proof
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 </div>
@@ -621,7 +685,11 @@ export default function SusanPortfolio() {
                   <Phone className="h-6 w-6 text-green-600" />
                 </div>
                 <h3 className="font-semibold text-gray-800" style={{fontFamily: 'Poppins, sans-serif'}}>Phone</h3>
-                <p className="text-gray-600 text-sm" style={{fontFamily: 'Inter, sans-serif'}}>+977 9824562967</p>
+                <a href="tel:+9779824562967" 
+                   className="text-green-600 hover:text-green-800 text-sm" 
+                   style={{fontFamily: 'Inter, sans-serif'}}>
+                  +977 9824562967
+                </a>
               </div>
               
               <div className="flex flex-col items-center space-y-2">
@@ -629,7 +697,13 @@ export default function SusanPortfolio() {
                   <MapPin className="h-6 w-6 text-purple-600" />
                 </div>
                 <h3 className="font-semibold text-gray-800" style={{fontFamily: 'Poppins, sans-serif'}}>Location</h3>
-                <p className="text-gray-600 text-sm" style={{fontFamily: 'Inter, sans-serif'}}>Nepal</p>
+                <a href="https://maps.google.com/?q=Bhaktapur%2C%20Nepal" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="text-purple-600 hover:text-purple-800 text-sm" 
+                   style={{fontFamily: 'Inter, sans-serif'}}>
+                  Nepal
+                </a>
               </div>
             </div>
             
@@ -689,32 +763,32 @@ export default function SusanPortfolio() {
             </form>
           </div>
         </div>
-
+        
         {/* Languages Section */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12 animate-fade-in"
+              style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
+            Languages
+          </h2>
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50">
-            <h3 className="text-2xl font-bold text-center mb-6"
-                style={{fontFamily: 'Poppins, sans-serif', color: '#00bcd4'}}>
-              Languages
-            </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div className="flex flex-col items-center space-y-2">
                 <div className="bg-blue-100 p-3 rounded-full">
-                  <Globe className="h-6 w-6 text-blue-600" />
+                  <Languages className="h-6 w-6 text-blue-600" />
                 </div>
                 <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>English</span>
                 <span className="text-blue-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Fluent</span>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <div className="bg-green-100 p-3 rounded-full">
-                  <Globe className="h-6 w-6 text-green-600" />
+                  <Languages className="h-6 w-6 text-green-600" />
                 </div>
                 <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Nepali</span>
                 <span className="text-green-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Native</span>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <div className="bg-orange-100 p-3 rounded-full">
-                  <Globe className="h-6 w-6 text-orange-600" />
+                  <Languages className="h-6 w-6 text-orange-600" />
                 </div>
                 <span className="text-gray-700 font-medium" style={{fontFamily: 'Inter, sans-serif'}}>Hindi</span>
                 <span className="text-orange-600 font-semibold" style={{fontFamily: 'Inter, sans-serif'}}>Intermediate</span>
